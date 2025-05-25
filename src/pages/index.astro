@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import TypedText from "../components/TypedText.tsx";
+---
+
+<Layout>
+  <div
+    class="relative bg-[url('/Hero%20Background.png')] bg-scroll bg-cover h-screen w-screen p-12 pl-42 flex flex-row"
+  >
+    <img
+      src="Arrow.png"
+      alt=""
+      class="absolute h-124 right-24 top-6 justify-self-end self-start"
+    />
+    <img
+      src="Chevron Down.png"
+      alt=""
+      class="absolute h-3 bottom-12 left-1/2 transform -translate-x-1/2 animate-[hover-bounce_1.5s_infinite]"
+    />
+    <div class="h-full w-full flex-col font-mono z-10">
+      <div class="w-180 pt-72">
+        <p class="text-4xl text-base-300 font-normal">
+          Hello, my name is <span class="text-base-200 font-black">Adi</span> and
+          I'm a
+        </p>
+      </div>
+      <div class="h-74 pt-15 pb-12 flex flex-col">
+        <TypedText client:load />
+      </div>
+      <div
+        class="w-fit h-fit mt-30 cursor-pointer transition-all ease-in-out duration-[0.3s] hover:scale-125"
+      >
+        <a
+          class="bg-base-100 text-base-content text-2xl font-medium font-mono w-fit h-fit rounded-full pt-2 pb-2 pl-5 pr-5"
+        >
+          My works
+        </a>
+      </div>
+    </div>
+    <div
+      class="relative h-full w-[50%] p-24 flex justify-center items-center font-mono z-10"
+    >
+      <img src="/Profile Picture.png" alt="" class="w-full" />
+    </div>
+  </div>
+  <div class="bg-base-content relative h-full w-full flex-1 p-12 pl-42">
+    hello world, content goes here
+    <div class="h-700"></div>
+  </div>
+  <div class="relative h-full w-full flex-1 p-12 pl-42">
+    hello world
+    <div class="h-700"></div>
+  </div>
+  <!--  
+  <div class="h-36">
+    hello world again :333
+  </div>
+  -->
+</Layout>

@@ -1,0 +1,26 @@
+---
+import "../styles/global.css";
+import BackToTop from "../components/BackToTop.astro";
+import Navbar from "../components/Navbar.astro"
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/Icon Light.svg" />
+		<meta name="generator" content={Astro.generator} />
+   
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+    <title>Paiman Portfolio</title>
+	</head>
+  <body> 
+    <BackToTop />
+    <div class="absolute z-50 top-0 h-full w-fit pt-[100vh] flex-none">
+      <Navbar />
+    </div>
+    <slot />
+	</body>
+</html>
