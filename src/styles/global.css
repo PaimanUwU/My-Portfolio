@@ -5,6 +5,10 @@
   --font-mono: "JetBrains Mono", monospace;
 }
 
+* {
+  cursor: none !important;
+}
+
 body {
   font-family: var(--font-mono);
   position: relative;

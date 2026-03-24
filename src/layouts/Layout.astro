@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Navbar from "../components/Navbar.tsx";
 import Footer from "../components/Footer.tsx";
+import CustomCursor from "../components/CustomCursor.tsx";
 import { ClientRouter } from 'astro:transitions'; // 1. Import Router
 
 const pathname = Astro.url.pathname;
@@ -18,7 +19,7 @@ const pathname = Astro.url.pathname;
     <title>Paiman Portfolio</title>
     
     <ClientRouter /> </head>
-  <body>
+  <body class="bg-white text-black overflow-x-hidden">
     <div class="absolute z-50 top-0 h-full w-fit flex-none">
       <Navbar client:load transition:persist currentPath={pathname} />
     </div>
@@ -27,6 +28,8 @@ const pathname = Astro.url.pathname;
       <slot />
       <Footer client:load />
     </main>
+
+    <CustomCursor client:load />
 
     <script>
       // With ClientRouter, use 'astro:after-swap' or 'astro:page-load' 

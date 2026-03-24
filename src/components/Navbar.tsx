@@ -34,6 +34,7 @@ export default function Navbar({ currentPath: initialPath }: NavProps) {
   return (
     <motion.div
       className="sticky z-50 top-0 left-0 h-screen w-16 tablet:w-23 p-2 tablet:p-6 flex flex-col justify-between"
+      style={{ translateZ: 0 }}
       initial={{ opacity: 0, x: -100 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
