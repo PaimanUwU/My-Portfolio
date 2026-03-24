@@ -53,11 +53,11 @@ const Section = () => {
                 </p>
 
                 <div className="flex flex-end gap-4 mt-8 w-full">
-                  <button className="px-6 py-3 bg-gray-900 text-white rounded-md font-bold hover:bg-black transition-all">
-                    Get in Touch
+                  <button className="px-6 py-3 bg-gray-900 text-white rounded-md font-bold shadow-xl hover:bg-black transition-all group">
+                    Get in Touch 
                   </button>
-                  <button className="px-6 py-3 border border-gray-300 text-gray-900 rounded-md font-bold hover:bg-gray-50 transition-all">
-                    View Works
+                  <button className="px-6 py-3 inline-flex gap-4 items-center border border-gray-300 text-gray-900 rounded-md font-bold hover:bg-gray-200 transition-all group">
+                    View Works <span className="group-hover:translate-x-2 transition-transform">→</span>
                   </button>
                 </div>
 
@@ -69,7 +69,7 @@ const Section = () => {
                   <h3 className="text-s font-bold uppercase tracking-widest text-gray-400 mb-4 font-mono">// Key Skills</h3>
                   <div className="flex flex-wrap gap-2">
                     {aboutData.skills.map(skill => (
-                      <span key={skill} className="px-3 py-1 bg-gray-100 border border-gray-200 rounded-full text-xs text-gray-900 font-bold">
+                      <span key={skill} className="px-3 py-1 bg-gray-100 border border-gray-200 rounded-full text-xs text-gray-900 font-bold uppercase">
                         {skill}
                       </span>
                     ))}

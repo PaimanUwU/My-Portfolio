@@ -29,7 +29,7 @@ const pathname = Astro.url.pathname;
       <Footer client:load />
     </main>
 
-    <CustomCursor client:load />
+    <CustomCursor client:load transition:persist />
 
     <script>
       // With ClientRouter, use 'astro:after-swap' or 'astro:page-load' 

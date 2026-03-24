@@ -58,6 +58,13 @@ export default function Navbar({ currentPath: initialPath }: NavProps) {
         </a>
 
         <a 
+          href="/blogs" 
+          className={`py-2 px-4 rounded -rotate-90 inline-block transition-all duration-200 hover:bg-gray-900 hover:text-white cursor-none select-none ${getActiveStyles("/blogs")}`}
+        >
+          contact
+        </a>
+        
+        <a 
           href="/contact" 
           className={`py-2 px-4 rounded -rotate-90 inline-block transition-all duration-200 hover:bg-gray-900 hover:text-white cursor-none select-none ${getActiveStyles("/contact")}`}
         >
@@ -67,20 +74,18 @@ export default function Navbar({ currentPath: initialPath }: NavProps) {
 
       {/* Social Icons */}
       <div className="w-full flex flex-col justify-end gap-4">
-        <a
+        <button
           href="https://github.com"
-          target="_blank"
-          className="bg-base-100 rounded-main w-full aspect-square flex items-center justify-center text-accent cursor-pointer transition-all ease-in-out duration-300 hover:scale-125"
+          className="group bg-base-100 rounded-main w-full aspect-square flex items-center justify-center text-accent cursor-pointer transition-all ease-in-out duration-300 hover:scale-125"
         >
           <img src="/github.svg" alt="github icon" className="w-4 tablet:w-5" />
-        </a>
-        <a
+        </button>
+        <button
           href="https://linkedin.com"
-          target="_blank"
-          className="bg-base-100 rounded-main w-full aspect-square flex items-center justify-center text-accent cursor-pointer transition-all ease-in-out duration-300 hover:scale-125"
+          className="group bg-base-100 rounded-main w-full aspect-square flex items-center justify-center text-accent cursor-pointer transition-all ease-in-out duration-300 hover:scale-125"
         >
           <img src="/linkedin.svg" alt="linkedin icon" className="w-3 tablet:w-4" />
-        </a>
+        </button>
       </div>
     </motion.div>
   );

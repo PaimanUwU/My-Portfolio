@@ -20,7 +20,7 @@ const allWorks = Object.entries(workFiles).map(([path, module]: [string, any]) =
   <div class="top-0 z-0 min-h-screen w-full pl-20 p-8">
     <span class="p-4 mb-2 font-mono text-sm text-gray-500 block">-// Works</span>
     
-    <div class="mt-8">
+    <div class="mt-8 mb-[20vh]">
       <WorksList projects={allWorks} client:load />
     </div>
   </div>
