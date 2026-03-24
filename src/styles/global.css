@@ -36,8 +36,14 @@ body {
   --radius-box: 0.8rem;
   --size-selector: 0.21875rem;
   --size-field: 0.3125rem;
+
+  --radius-main: 0.3rem;
   --border: 2px;
- 
+
+  --breakpoint-*: initial;
+  --breakpoint-phone: 24rem;
+  --breakpoint-tablet: 58rem;
+  --breakpoint-desktop: 120rem;
 }
 
 .typed-cursor {
@@ -47,18 +53,39 @@ body {
 }
 
 @keyframes hover-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 @keyframes spin-in {
-  0% { transform: rotate(0deg) scale(0); opacity: 0; }
-  100% { transform: rotate(360deg) scale(1); opacity: 1; }
+  0% {
+    transform: rotate(0deg) scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes spin-out {
-  0% { transform: rotate(360deg) scale(1); opacity: 1; }
-  100% { transform: rotate(0deg) scale(0); opacity: 0; }
+  0% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(0deg) scale(0);
+    opacity: 0;
+  }
 }
 
 /* Back-to-Top Button */
@@ -69,7 +96,6 @@ body {
   background-color: oklch(21% 0.034 264.665);
   color: oklch(96% 0.001 286.375);
   aspect-ratio: 1;
-  border-radius: 0.8em;
   padding: 12px;
   opacity: 0;
   cursor: pointer;
@@ -92,8 +118,10 @@ body {
 /* Rounded Square Progress Bar */
 .progress-border {
   position: absolute;
-  width: 110%; /* Slightly smaller size */
-  height: 110%; /* Slightly smaller size */
+  width: 110%;
+  /* Slightly smaller size */
+  height: 110%;
+  /* Slightly smaller size */
   top: 50%;
   left: 50%;
   transform: translate(-48%, -52%);
@@ -125,4 +153,14 @@ body {
   animation: spin-out 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera*/
+}

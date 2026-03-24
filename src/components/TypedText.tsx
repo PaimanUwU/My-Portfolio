@@ -7,7 +7,7 @@ const TypedText = () => {
   useEffect(() => {
     if (typedRef.current) {
       const typed = new Typed(typedRef.current, {
-        strings: ["Web Designer.", "Web Developer."],
+        strings: ["Hello.", "Hai.", "こんにちは.", "Hola.", "你好."],
         typeSpeed: 100,
         backSpeed: 50,
         backDelay: 1000,
@@ -22,7 +22,7 @@ const TypedText = () => {
     }
   }, []);
 
-  return <span ref={typedRef} className="text-8xl text-accent-content font-black"></span>;
+  return <span ref={typedRef} className=" text-accent-content text-wrap font-black text-[6rem] tablet:text-[10rem] tablet:-translate-3 desktop:-translate-9 desktop:text-[25rem] "></span>;
 };
 
 export default TypedText;
