@@ -8,7 +8,7 @@ export default function Footer() {
 
   const [randoms] = useState(() => {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-    return Array.from({ length: 100 }, () =>
+    return Array.from({ length: 60 }, () =>
       chars.charAt(Math.floor(Math.random() * chars.length))
     );
   });

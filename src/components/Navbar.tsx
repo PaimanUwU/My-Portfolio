@@ -27,7 +27,7 @@ export default function Navbar({ currentPath: initialPath }: NavProps) {
     const normalizedTarget = path.replace(/\/$/, "") || "/";
     
     return normalizedCurrent === normalizedTarget 
-      ? "font-bold underline opacity-100" 
+      ? "opacity-100 bg-gray-900 text-white " 
       : "font-normal opacity-70";
   };
 
@@ -44,21 +44,21 @@ export default function Navbar({ currentPath: initialPath }: NavProps) {
       <div className="flex flex-col items-center gap-16 py-10">
         <a 
           href="/" 
-          className={`py-2 -rotate-90 inline-block transition-all hover:opacity-100 ${getActiveStyles("/")}`}
+          className={`py-2 px-4 rounded -rotate-90 inline-block transition-all duration-200 hover:bg-gray-900 hover:text-white cursor-none select-none ${getActiveStyles("/")}`}
         >
           about
         </a>
 
         <a 
           href="/works" 
-          className={`py-2 -rotate-90 inline-block transition-all hover:opacity-100 ${getActiveStyles("/works")}`}
+          className={`py-2 px-4 rounded -rotate-90 inline-block transition-all duration-200 hover:bg-gray-900 hover:text-white cursor-none select-none ${getActiveStyles("/works")}`}
         >
           works
         </a>
 
         <a 
           href="/contact" 
-          className={`py-2 -rotate-90 inline-block transition-all hover:opacity-100 ${getActiveStyles("/contact")}`}
+          className={`py-2 px-4 rounded -rotate-90 inline-block transition-all duration-200 hover:bg-gray-900 hover:text-white cursor-none select-none ${getActiveStyles("/contact")}`}
         >
           contact
         </a>
