@@ -1,8 +1,27 @@
 ---
-import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.tsx";
+import WorksList from "../components/WorksList.tsx";
+
+// Dynamically import all work files from the works directory
+const workFiles = import.meta.glob('./works/*.tsx', { eager: true });
+const allWorks = Object.entries(workFiles).map(([path, module]: [string, any]) => {
+  const slug = path.split('/').pop()?.replace('.tsx', '');
+  return {
+    slug,
+    data: module.aboutData,
+    url: `/works/${slug}`
+  };
+}).sort((a, b) => {
+  return new Date(b.data.sortDate).getTime() - new Date(a.data.sortDate).getTime();
+});
 ---
+
 <Layout>
-works page
+  <div class="top-0 z-0 min-h-screen w-full pl-20 p-8">
+    <span class="p-4 mb-2 font-mono text-sm text-gray-500 block">-// Works</span>
+    
+    <div class="mt-8">
+      <WorksList projects={allWorks} client:load />
+    </div>
+  </div>
 </Layout>

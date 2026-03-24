@@ -4,7 +4,7 @@ import { MapPin, User, Code2, Calendar, MoveRight } from "lucide-react";
 import Branding from "../assets/Icon Dark.svg";
 
 // Import the data here
-import { aboutData } from "../data/aboutData"; 
+import { aboutData } from "../data/aboutData.ts"; 
 
 const Section = () => {
   return (
