@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ProjectData {
-  name: string;
-  date: string;
-  location?: string;
+  title: string;
+  pubDate: Date | string;
+  status: 'halt' | 'working' | 'finished';
+  location: string;
   description: string;
   stack: string[];
-  role?: string;
-  experience?: string;
-  bio?: string;
+  role: string;
+  experience: string;
+  bio: string;
+  github?: string;
 }
 
 interface Project {
@@ -18,8 +20,19 @@ interface Project {
   url: string;
 }
 
-export default function WorksList({ projects }: { projects: Project[] }) {
+export default function WorksList({ projects, className }: { projects: Project[], className?: string }) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (expandedId) {
+      setTimeout(() => {
+        const element = document.getElementById(`work-item-${expandedId}`);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    }
+  }, [expandedId]);
 
   const toggleExpand = (id: string, _url: string) => {
     if (expandedId === id) {
@@ -29,14 +42,24 @@ export default function WorksList({ projects }: { projects: Project[] }) {
     }
   };
 
+  const formatDate = (date: Date | string) => {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: 'UTC',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(new Date(date));
+  };
+
   return (
-    <div className="relative border-l border-gray-200 ml-4 md:ml-20 space-y-24 pb-20">
+    <div className={`relative border-l border-gray-200 ml-4 desktop:ml-20 space-y-24 pb-20 ${className || ''}`}>
       {projects.map((project: Project) => {
         const isExpanded = expandedId === project.slug;
         const data = project.data;
 
         return (
           <motion.div
+            id={`work-item-${project.slug}`}
             key={project.slug}
             initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,14 +67,22 @@ export default function WorksList({ projects }: { projects: Project[] }) {
             className={`relative pl-8 pr-8 transition-all duration-500 ${isExpanded ? 'bg-gray-50 py-8 rounded-lg shadow-xl shadow-gray-100 ' : 'hover:bg-white/5 py-4 rounded-r-lg'}`}
           >
             {/* Timeline Dot */}
-            <div className={`absolute -left-[5px] top-6 w-2 h-2 rounded-full border border-black z-10 transition-colors duration-300 ${isExpanded ? 'bg-white scale-150' : 'bg-gray-600'}`} />
+            <div className={`absolute -left-[5px] top-5 w-2 h-2 rounded-full border border-black z-10 transition-colors duration-300 ${isExpanded ? 'bg-white scale-150' : 'bg-gray-600'}`} />
 
-            <header className="mb-4 cursor-pointer group" onClick={() => toggleExpand(project.slug, project.url)}>
-              <p className="font-mono text-xs text-gray-500 uppercase tracking-widest transition-colors group-hover:text-gray-300">
-                {data.date} {data.location && <span className="mx-2 text-gray-700">★</span>} {data.location}
+            <header className="mb-2 cursor-pointer group" onClick={() => toggleExpand(project.slug, project.url)}> <p className="font-mono text-xs text-gray-500 uppercase mb-10 tracking-widest transition-colors group-hover:text-gray-300 flex items-center gap-8">
+                <span>{formatDate(data.pubDate)}</span>
+                <span className="flex items-center gap-2 capitalized">
+                  <span className="relative flex h-2 w-2 ">
+                    {data.status === 'working' && (
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    )}
+                    <span className={`relative inline-flex rounded-full h-2 w-2 ${data.status === 'working' ? 'bg-green-500' : data.status === 'halt' ? 'bg-red-500' : 'bg-gray-500'}`}></span>
+                  </span>
+                  {data.status}
+                </span>
               </p>
-              <h2 className="text-4xl font-bold font-bold text-gray-900 leading-tight tracking-tight group-hover:translate-x-1 hover:cursor-pointer transition-transform inline-block">
-                {data.name}
+              <h2 className="text-4xl font-bold font-bold text-gray-900 leading-tight tracking-tight transition-transform inline-block group-hover:text-blue-500 transition-colors">
+                {data.title}
               </h2>
             </header>
 
@@ -63,7 +94,7 @@ export default function WorksList({ projects }: { projects: Project[] }) {
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {data.stack.map((tech: string) => (
-                    <span key={tech} className="px-3 py-1 bg-gray-100 border border-gray-200 rounded-full text-xs text-gray-900 font-bold uppercase">
+                    <span key={tech} className="px-2.5 py-1 bg-gray-50 border border-gray-100 rounded-md text-[10px] font-bold uppercase tracking-wider text-gray-700">
                       {tech}
                     </span>
                   ))}
@@ -83,10 +114,6 @@ export default function WorksList({ projects }: { projects: Project[] }) {
                           <div>
                             <h4 className="text-xs font-mono text-gray-500 uppercase mb-2">Role</h4>
                             <p className="text-gray-900">{data.role}</p>
-                          </div>
-                          <div>
-                            <h4 className="text-xs font-mono text-gray-500 uppercase mb-2">Experience</h4>
-                            <p className="text-gray-900">{data.experience}</p>
                           </div>
                         </div>
 

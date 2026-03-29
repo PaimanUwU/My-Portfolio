@@ -18,8 +18,7 @@ const CustomCursor = () => {
       const target = e.target as HTMLElement;
       setIsPointer(
         window.getComputedStyle(target).cursor === "pointer" ||
-          target.tagName === "A" ||
-          target.tagName === "BUTTON"
+        !!target.closest('a, button, [onclick]')
       );
     };
 
@@ -31,7 +30,7 @@ const CustomCursor = () => {
 
   return (
     <motion.div
-      className={`fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-white pointer-events-none z-[2147483647] mix-blend-difference ${isPointer ? "bg-white" : ""}`}
+      className={`hidden desktop:block fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-white pointer-events-none z-[2147483647] mix-blend-difference ${isPointer ? "bg-white" : ""}`}
       style={{
         x: cursorXSpring,
         y: cursorYSpring,

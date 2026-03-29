@@ -18,11 +18,10 @@ export const aboutData = {
   location: "Malaysia",
   role: "Full Stack Developer",
   experience: "1+ Years",
-  bio: "I’m a Full Stack Developer based in Malaysia with a weird habit of overthinking UI/UX until it’s perfect. I spend my time balancing clean, scalable code with the beautiful chaos of modern web design",
+  bio: "Full Stack Developer by day, UI/UX obsessive by heart. Based in Malaysia, I specialize in balancing the logic of scalable backends with the precision of high-fidelity design. I don't just ship features; I craft digital experiences where every pixel has a purpose.",
   socials: [
     { name: "GitHub", url: "https://github.com/PaimanUwU", icon: "Github" },
     { name: "LinkedIn", url: "#", icon: "Linkedin" },
-    { name: "Instagram", url: "#", icon: "Instagram" },
     { name: "Email", url: "mailto:your@email.com", icon: "Mail" }
   ],
   techStack: [
@@ -35,23 +34,20 @@ export const aboutData = {
     'TypeScript', 
     'Astro', 
     'TailwindCSS', 
-    'Node.js', 
     'Laravel',
     'PHP',
   ],
   services: [
-    'UI/UX Design',
     'Full Stack Development',
-    'Frontend Development',
-    'API Integration'
+    'UI/UX Design',
   ],
   stats: [
-    { label: "Years of Experience", value: "1+" },
-    { label: "Projects Completed", value: "5+" },
+    { label: "Code and Design Experience", value: "3+ years" },
+    { label: "Projects Completed", value: "2" },
   ],
   education: [
     {
-      degree: "Bachelor of Computer Science",
+      degree: "Bachelor in Computer Science (Honours)",
       institution: "UiTM Shah Alam",
       duration: "3 Years",
       year: "2025 - 2027",
